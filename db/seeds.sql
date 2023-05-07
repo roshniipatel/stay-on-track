@@ -11,7 +11,7 @@ INSERT INTO role (title, salary, department_id)
 VALUES  
   ('Engineer', 58000, 1),
   ('Project Manager', 45000, 1),
-  ('Accountant', 70000, 5),
+  ('Accountant', 70000, 4),
   ('Product Manager', 17000, 4),
   ('Recruiter', 42000, 3),
   ('Team Leader', 54000, 2),
@@ -21,7 +21,7 @@ VALUES
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES 
-  ('Magnus', 'Bane', 9, NULL),
+  ('Magnus', 'Bane', 4, NULL),
   ('Alexander', 'Lightwood', 4, NULL),
   ('Isabella', 'Lightwood', 6, NULL),
   ('Raphael', 'Santiago', 5, 2),
