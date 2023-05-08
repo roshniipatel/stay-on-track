@@ -78,6 +78,7 @@ function listDepartment() {
     if (err) throw err;
     console.log("Viewing all departments");
     console.table(response);
+    init();
   })
 };
 
@@ -88,6 +89,7 @@ function listRoles() {
     if (err) throw err;
     console.log("Viewing all the roles");
     console.table(response);
+    init();
   })
 };
 
@@ -98,6 +100,7 @@ function listEmployees() {
     if (err) throw err;
     console.log("Viewing all employees");
     console.table(response);
+    init();
   })
 };
 
@@ -116,7 +119,7 @@ function addDepartment() {
         [response.name]), function (err, response) {
           if (err) throw err;
           console.table(response);
-          console.log("The department has been added to the database");
+          init();
         }
     })
 };
@@ -146,6 +149,7 @@ function addRole() {
         [response.role, response.salary, response.department]), function (err, response) {
           if (err) throw err;
           console.table(response);
+          init();
         }
     })
 };
@@ -180,6 +184,7 @@ function addEmployee() {
         [response.FirstName, response.LastName, response.RoleID, response.ManagerID]), function (err, response) {
           if (err) throw err;
           console.table(response);
+          init();
         }
     })
 };
