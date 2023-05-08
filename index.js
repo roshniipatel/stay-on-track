@@ -71,7 +71,6 @@ function Leave() {
 };
 
 // tutor helped cut and clean up large blocks of codes!
-
 // function to view all the departments
 function listDepartment() {
   const request = "SELECT * FROM department";
@@ -107,18 +106,18 @@ function addDepartment() {
   inquirer.prompt([
     {
       type: 'input',
-      name: 'name',
-      message: 'What is the name of the new Department?'
+      message: 'What is the name of the new Department?',
+      name: 'name'
     }
   ])
-    .then((answer) => {
-      const { name } = answer;
-      const stringInfo = `INSERT INTO department (name) VALUES (?)`;
-      db.query(stringInfo, name, (err, result) => {
-        if (err) throw err;
-        console.log(`'${name}' added to department database`);
-        viewDepartments();
-      })
+
+    .then(function (response) {
+      db.query(`INSERT INTO department (name) VALUES (?)`,
+        [response.name]), function (err, response) {
+          if (err) throw err;
+          console.table(response);
+          console.log("The department has been added to the database");
+        }
     })
 };
 
