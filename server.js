@@ -141,7 +141,33 @@ function addDepartment() {
 };
 
 // function for adding a role
-
+function addRole() {
+  inquirer.prompt([
+    {
+      type: 'input',
+      message: 'What is the new chosen role?',
+      name: 'role'
+    },
+    {
+      type: 'input',
+      message: 'What is the salary for this role?',
+      name: 'salary'
+    },
+    {
+      type: 'list',
+      message: 'Which department does this role belong to?',
+      choices: ['1', '2', '3', '4'],
+      name: 'department'
+    }
+  ])
+    .then(function (response) {
+      db.query('INSERT INTO role(title, salary, department_id) VALUES (?,?,?)',
+        [response.role, response.salary, response.department]), function (err, response) {
+          if (err) throw err;
+          console.table(response);
+        }
+    })
+}
 
 // function for adding a new employee
 function addEmployee() {
@@ -172,7 +198,7 @@ function addEmployee() {
       db.query('INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)',
         [response.FirstName, response.LastName, response.RoleID, response.ManagerID]), function (err, response) {
           if (err) throw err;
-          console.table(res);
+          console.table(response);
         }
     })
 }
