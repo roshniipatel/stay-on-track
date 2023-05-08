@@ -52,8 +52,8 @@ function init() {
         case 'Add an employee':
           addEmployee();
           break;
-        case 'Delete an employee':
-          deleteEmployee();
+        case 'Update an employee role':
+          updateEmployee();
           break;
         case 'Leave the application':
           Leave();
@@ -189,7 +189,29 @@ function addEmployee() {
     })
 };
 
-// function for updating a current employee
-
+// function for updating a current employee's role
+function updateEmployee() {
+  inquirer.prompt([
+    {
+      type: 'input',
+      message: 'What is the ID of the employee you want to update?',
+      name: 'id'
+    },
+    {
+      type: 'input',
+      message: 'What is the new role ID for this employee?',
+      name: 'role_id'
+    }
+  ])
+    .then(function (response) {
+      db.query('UPDATE employee SET role_id = ? WHERE id = ?',
+        [response.role_id, response.id], function (err, response) {
+          if (err) throw err;
+          console.table(response);
+          console.log(`Employee ${response.id} has been updated with new role ID ${response.role_id}`);
+          init();
+        });
+    });
+}
 
 init();

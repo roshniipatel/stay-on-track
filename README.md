@@ -18,14 +18,15 @@ OR
 
 ## Links
 Repository: https://github.com/roshniipatel/stay-on-track 
+
 Walk-through Video:
 
 ## Credits
 Inquirer Package
 
-mysql 2
+MYSQL2 Package
 
-Bootcamp Tutor (helped shrink down lot of code to make it look cleaner)
+Bootcamp Tutor (helped shrink down lot of code to make it look cleaner and easy to read)
 
 AskBCS assistants (helped a lot with small fixes)
 
