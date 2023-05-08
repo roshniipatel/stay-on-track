@@ -67,7 +67,7 @@ function init() {
 // function to leave the app
 function Leave() {
   console.log('Toodles!');
-  db.exit();
+  db.end();
 };
 
 // tutor helped cut and clean up large blocks of codes!
