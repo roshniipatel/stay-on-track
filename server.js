@@ -88,57 +88,37 @@ function Leave() {
   db.exit();
 }
 
+// tutor helped cut and clean up large blocks of codes!
+
 // function to view all the departments
 function listDepartment() {
-  const stringInfo = `
-  SELECT department.id, 
-  department.name FROM department;
-  `;
-  db.query(stringInfo, (err, result) => {
+  const request = "SELECT * FROM department";
+  db.query(request, function (err, response) {
     if (err) throw err;
-    console.table(result);
-    init();
+    console.log("Viewing all departments");
+    console.table(response);
   })
-};
+}
 
 // function to view all the roles
 function listRoles() {
-  const stringInfo = `
-    SELECT role.id, 
-    role.title, 
-    department.name AS department, 
-    role.salary 
-    FROM role 
-    JOIN department ON role.department_id = department.id;
-    `;
-  db.query(stringInfo, (err, result) => {
+  let request = "SELECT * FROM role";
+  db.query(request, function (err, response) {
     if (err) throw err;
-    console.table(result);
-    init();
+    console.log("Viewing all the roles");
+    console.table(response);
   })
-};
+}
 
 // function for viewing all employees
 function listEmployees() {
-  const stringInfo = `
-  SELECT employee.id,  
-  employee.first_name, 
-  employee.last_name, 
-  role.title, 
-  department.name AS department,
-  role.salary,
-  CONCAT(manager.first_name, ' ', manager.last_name) AS manager 
-  FROM employee
-  JOIN role ON employee.role_id = role.id
-  JOIN department on role.department_id = department.id
-  LEFT JOIN employee manager ON manager.id = employee.manager_id;
-  `;
-  db.query(stringInfo, (err, result) => {
+  const request = "SELECT * FROM employee";
+  db.query(request, function (err, response) {
     if (err) throw err;
-    console.table(result);
-    init();
+    console.log("Viewing all employees");
+    console.table(response);
   })
-};
+}
 
 // function for adding a department 
 function addDepartment() {
