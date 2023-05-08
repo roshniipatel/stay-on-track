@@ -141,44 +141,42 @@ function addDepartment() {
 };
 
 // function for adding a role
-function addRole() {
+
+
+// function for adding a new employee
+function addEmployee() {
   inquirer.prompt([
     {
       type: 'input',
-      message: 'Enter the new role',
-      name: 'role'
+      message: 'What is the first name of this employee?',
+      name: 'FirstName'
     },
     {
       type: 'input',
-      message: 'Enter the salary for this role',
-      name: 'salary'
+      message: 'What is the last name of this employee?',
+      name: 'LastName'
     },
     {
-      type: 'list',
-      message: 'Which department does this role belong to?',
-      choices: ['Accounting', 'Management', 'Development', 'Human Resources'],
-      name: 'departmentType'
+      type: 'input',
+      message: 'What is the role ID of this employee?',
+      name: 'RoleID'
+    },
+    {
+      type: 'input',
+      message: 'What is the manager ID of this employee?',
+      name: 'ManagerID'
     }
+
   ])
-    .then((data) => {
-      console.log(data);
-      db.query(`
-      INSERT INTO role 
-      (title, 
-      salary, 
-      department.name AS department) 
-      VALUES (?, ?, ?)`, [data.role, data.salary, data.departmentType], function (err, results) {
-        if (err) {
-          throw err;
+    .then(function (response) {
+      db.query('INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)',
+        [response.FirstName, response.LastName, response.RoleID, response.ManagerID]), function (err, response) {
+          if (err) throw err;
+          console.table(res);
         }
-        console.table(results);
-      });
     })
 }
-
-// function for adding a new employee
 
 // function for updating a current employee
 
 init();
-
