@@ -1,7 +1,7 @@
 # stay-on-track
 
 ## Description
-An application that allows the user to make notes or To-do lists, and save them to refer back to. Data persists until the user chooses to delete the note.
+This is a Node.js-based command-line program that employs Inquirer and MySQL to manage a company's employee database. It is a content management system that operates via a CLI interface.
 
 ## Installation
 1. Copy the SSH key in my GitHub repo and paste git clone <SSHKEY> in your terminal to create a local copy on your computer
