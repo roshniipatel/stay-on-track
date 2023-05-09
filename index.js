@@ -119,38 +119,37 @@ function addDepartment() {
         [response.name]), function (err, response) {
           if (err) throw err;
           console.table(response);
-          init();
         }
-    })
+        init();
+      })
 };
 
 // function for adding a role
 function addRole() {
-  inquirer.prompt([
-    {
-      type: 'input',
-      message: 'What is the new chosen role?',
-      name: 'role'
-    },
-    {
-      type: 'input',
-      message: 'What is the salary for this role?',
-      name: 'salary'
-    },
-    {
-      type: 'list',
-      message: 'Which department does this role belong to?',
-      choices: ['1', '2', '3', '4'],
-      name: 'department'
-    }
-  ])
+    inquirer.prompt([
+      {
+        type: 'input',
+        message: 'What is the new chosen role?',
+        name: 'role'
+      },
+      {
+        type: 'input',
+        message: 'What is the salary for this role?',
+        name: 'salary'
+      },
+      {
+        type: 'input',
+        message: 'Which department does this role belong to?',
+        name: 'department'
+      }
+    ])
     .then(function (response) {
       db.query('INSERT INTO role(title, salary, department_id) VALUES (?,?,?)',
         [response.role, response.salary, response.department]), function (err, response) {
           if (err) throw err;
           console.table(response);
-          init();
         }
+        init();
     })
 };
 
@@ -184,8 +183,8 @@ function addEmployee() {
         [response.FirstName, response.LastName, response.RoleID, response.ManagerID]), function (err, response) {
           if (err) throw err;
           console.table(response);
-          init();
         }
+        init();
     })
 };
 
@@ -209,8 +208,8 @@ function updateEmployee() {
           if (err) throw err;
           console.table(response);
           console.log(`Employee ${response.id} has been updated with new role ID ${response.role_id}`);
-          init();
         });
+        init();
     });
 }
 
